@@ -3244,7 +3244,9 @@ S2.define('select2/diacritics',[
     '\u03B0': '\u03C5',
     '\u03CE': '\u03C9',
     '\u03C2': '\u03C3',
-    '\u2019': '\''
+    '\u2019': '\'',
+    '\u0451': '\u0435',
+    '\u0401': '\u0415'
   };
 
   return diacritics;
@@ -3751,7 +3753,7 @@ S2.define('select2/data/ajax',[
       }, function () {
         // Attempt to detect if a request was aborted
         // Only works if the transport exposes a status property
-        if ('status' in $request &&
+        if ($request && 'status' in $request &&
             ($request.status === 0 || $request.status === '0')) {
           return;
         }
@@ -6429,7 +6431,7 @@ S2.define('select2/selection/stopPropagation',[
     }
 
     function shouldAdjustOldDeltas(orgEvent, absDelta) {
-        // If this is an older event and the delta is divisible by 120,
+        // If this is an older event and the delta is divisable by 120,
         // then we are assuming that the browser is treating this as an
         // older mouse wheel event and that we should divide the deltas
         // by 40 to try and get a more usable deltaFactor.
